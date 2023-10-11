@@ -1,8 +1,5 @@
-import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:marvel_heroes/app/modules/marvel_characters/models/character/character_image_model.dart';
-import 'package:marvel_heroes/app/modules/marvel_characters/models/character/characters_response_model.dart';
 
 void main() {
   final characterImage = CharacterImageModel(path: "image", extension: "png");

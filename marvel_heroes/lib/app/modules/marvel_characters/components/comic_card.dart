@@ -17,11 +17,11 @@ class MarvelComicCard extends StatelessWidget {
         children: [
           Container(
             height: 250,
+            alignment: Alignment.center,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
               color: AppConsts.MARVEL_COLOR,
             ),
-            alignment: Alignment.center,
             child: SvgPicture.asset(
               "assets/marvel.svg",
               fit: BoxFit.contain,
@@ -52,9 +52,7 @@ class MarvelComicCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: Image.network(
-              comic.image!.url,
-            ),
+            child: Image.network(comic.image!.url),
           ),
           Container(
             margin: const EdgeInsets.only(top: 4, left: 4, right: 4),

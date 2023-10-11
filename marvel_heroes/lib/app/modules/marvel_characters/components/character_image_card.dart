@@ -34,9 +34,7 @@ class MarvelCharacterImageCard extends StatelessWidget {
     }
 
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.0),
-      ),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0)),
       alignment: Alignment.center,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),

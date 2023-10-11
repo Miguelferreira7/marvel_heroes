@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:marvel_heroes/app/core/components/character_card.dart';
+import 'package:marvel_heroes/app/modules/marvel_characters/components/character_card.dart';
 import 'package:marvel_heroes/app/core/components/snack_bar_dialog.dart';
 import 'package:marvel_heroes/app/core/consts/exception_consts.dart';
 import 'package:marvel_heroes/app/modules/marvel_characters/cubit/marvel_cubit.dart';
@@ -70,7 +70,7 @@ class _CharactersListPageState extends State<CharactersListPage> {
               if (error.isNotEmpty &&
                   error == ExceptionConsts.getCharactersErrorMessage) {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  padding: const EdgeInsets.all(4),
+                  padding: const EdgeInsets.all(4.0),
                   content: MarvelSnackBarDialog(message: error),
                   backgroundColor: Colors.transparent,
                 ));
@@ -96,19 +96,30 @@ class _CharactersListPageState extends State<CharactersListPage> {
           }
 
           onScrollEndListener(context, state);
-          return GridView.builder(
-            controller: _scrollController,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  child: GridView.builder(
+                    controller: _scrollController,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                    ),
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.only(top: 8.0),
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: state.characters!.data!.characters!.length,
+                    itemBuilder: (context, index) {
+                      return MarvelCharacterCard(
+                        character: state.characters!.data!.characters![index],
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
-            padding: const EdgeInsets.only(top: 8),
-            physics: const BouncingScrollPhysics(),
-            itemCount: state.characters!.data!.characters!.length,
-            itemBuilder: (context, index) {
-              return MarvelCharacterCard(
-                character: state.characters!.data!.characters![index],
-              );
-            },
           );
         },
       ),

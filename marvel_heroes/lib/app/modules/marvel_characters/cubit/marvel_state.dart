@@ -7,15 +7,17 @@ part 'marvel_state.freezed.dart';
 
 @freezed
 abstract class MarvelState with _$MarvelState {
-  const factory MarvelState({required bool isLoading, @Default(null) CharactersResponseModel? characters, @Default([]) List<ComicModel> comics,  MarvelApiExceptions? exception}) = _ComicsState;
+  const factory MarvelState({required bool isLoading, required bool isLoadingMoreCharacters, @Default(null) CharactersResponseModel? characters, @Default([]) List<ComicModel> comics,  MarvelApiExceptions? exception}) = _ComicsState;
 
-  factory MarvelState.initialState() => const MarvelState(isLoading: false, characters: null, comics: []);
+  factory MarvelState.initialState() => const MarvelState(isLoading: false, isLoadingMoreCharacters: false, characters: null, comics: []);
 
-  factory MarvelState.isLoading(bool isLoading) => MarvelState(isLoading: isLoading, characters: null);
+  factory MarvelState.isLoading(bool isLoading) => MarvelState(isLoading: isLoading, isLoadingMoreCharacters: false, characters: null);
 
-  factory MarvelState.getAllCharactersResult(CharactersResponseModel? characters) => MarvelState(isLoading: false, characters: characters);
+  factory MarvelState.isLoadingMoreCharacters(bool isLoadingMore) => MarvelState(isLoading: isLoadingMore, isLoadingMoreCharacters: false);
 
-  factory MarvelState.comicsResult(List<ComicModel> comics) => MarvelState(isLoading: false,  comics: comics);
+  factory MarvelState.getAllCharactersResult(CharactersResponseModel? characters) => MarvelState(isLoading: false, isLoadingMoreCharacters: false, characters: characters);
 
-  factory MarvelState.error(MarvelApiExceptions exception) => MarvelState(isLoading: false,  exception: exception);
+  factory MarvelState.comicsResult(List<ComicModel> comics) => MarvelState(isLoading: false, isLoadingMoreCharacters: false,  comics: comics);
+
+  factory MarvelState.error(MarvelApiExceptions exception) => MarvelState(isLoading: false, isLoadingMoreCharacters: false,  exception: exception);
 }

@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$MarvelState {
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isLoadingMoreCharacters => throw _privateConstructorUsedError;
   CharactersResponseModel? get characters => throw _privateConstructorUsedError;
   List<ComicModel> get comics => throw _privateConstructorUsedError;
   MarvelApiExceptions? get exception => throw _privateConstructorUsedError;
@@ -34,6 +35,7 @@ abstract class $MarvelStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
+      bool isLoadingMoreCharacters,
       CharactersResponseModel? characters,
       List<ComicModel> comics,
       MarvelApiExceptions? exception});
@@ -55,6 +57,7 @@ class _$MarvelStateCopyWithImpl<$Res, $Val extends MarvelState>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? isLoadingMoreCharacters = null,
     Object? characters = freezed,
     Object? comics = null,
     Object? exception = freezed,
@@ -63,6 +66,10 @@ class _$MarvelStateCopyWithImpl<$Res, $Val extends MarvelState>
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingMoreCharacters: null == isLoadingMoreCharacters
+          ? _value.isLoadingMoreCharacters
+          : isLoadingMoreCharacters // ignore: cast_nullable_to_non_nullable
               as bool,
       characters: freezed == characters
           ? _value.characters
@@ -102,6 +109,7 @@ abstract class _$$ComicsStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
+      bool isLoadingMoreCharacters,
       CharactersResponseModel? characters,
       List<ComicModel> comics,
       MarvelApiExceptions? exception});
@@ -122,6 +130,7 @@ class __$$ComicsStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? isLoadingMoreCharacters = null,
     Object? characters = freezed,
     Object? comics = null,
     Object? exception = freezed,
@@ -130,6 +139,10 @@ class __$$ComicsStateImplCopyWithImpl<$Res>
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingMoreCharacters: null == isLoadingMoreCharacters
+          ? _value.isLoadingMoreCharacters
+          : isLoadingMoreCharacters // ignore: cast_nullable_to_non_nullable
               as bool,
       characters: freezed == characters
           ? _value.characters
@@ -152,6 +165,7 @@ class __$$ComicsStateImplCopyWithImpl<$Res>
 class _$ComicsStateImpl implements _ComicsState {
   const _$ComicsStateImpl(
       {required this.isLoading,
+      required this.isLoadingMoreCharacters,
       this.characters = null,
       final List<ComicModel> comics = const [],
       this.exception})
@@ -159,6 +173,8 @@ class _$ComicsStateImpl implements _ComicsState {
 
   @override
   final bool isLoading;
+  @override
+  final bool isLoadingMoreCharacters;
   @override
   @JsonKey()
   final CharactersResponseModel? characters;
@@ -176,7 +192,7 @@ class _$ComicsStateImpl implements _ComicsState {
 
   @override
   String toString() {
-    return 'MarvelState(isLoading: $isLoading, characters: $characters, comics: $comics, exception: $exception)';
+    return 'MarvelState(isLoading: $isLoading, isLoadingMoreCharacters: $isLoadingMoreCharacters, characters: $characters, comics: $comics, exception: $exception)';
   }
 
   @override
@@ -186,6 +202,9 @@ class _$ComicsStateImpl implements _ComicsState {
             other is _$ComicsStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(
+                    other.isLoadingMoreCharacters, isLoadingMoreCharacters) ||
+                other.isLoadingMoreCharacters == isLoadingMoreCharacters) &&
             (identical(other.characters, characters) ||
                 other.characters == characters) &&
             const DeepCollectionEquality().equals(other._comics, _comics) &&
@@ -194,8 +213,13 @@ class _$ComicsStateImpl implements _ComicsState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, characters,
-      const DeepCollectionEquality().hash(_comics), exception);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      isLoadingMoreCharacters,
+      characters,
+      const DeepCollectionEquality().hash(_comics),
+      exception);
 
   @JsonKey(ignore: true)
   @override
@@ -207,12 +231,15 @@ class _$ComicsStateImpl implements _ComicsState {
 abstract class _ComicsState implements MarvelState {
   const factory _ComicsState(
       {required final bool isLoading,
+      required final bool isLoadingMoreCharacters,
       final CharactersResponseModel? characters,
       final List<ComicModel> comics,
       final MarvelApiExceptions? exception}) = _$ComicsStateImpl;
 
   @override
   bool get isLoading;
+  @override
+  bool get isLoadingMoreCharacters;
   @override
   CharactersResponseModel? get characters;
   @override

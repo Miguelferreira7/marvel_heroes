@@ -1,9 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:marvel_heroes/app/core/components/character_image_card.dart';
 import 'package:marvel_heroes/app/modules/marvel_characters/models/character/character_model.dart';
-import '../../modules/marvel_characters/pages/character_details_page.dart';
+import '../pages/character_details_page.dart';
+import 'character_image_card.dart';
 
 class MarvelCharacterCard extends StatelessWidget {
   final CharacterModel character;
